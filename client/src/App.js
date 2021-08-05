@@ -12,7 +12,7 @@ export default class App extends Component {
   render() {
 
     return (
-      <div className = "home">
+      <div className = "App">
         <h1> 嘻嘻嘻 </h1>
         <button onClick = {this.onButton1}> btn_1</button>
         <br/>
@@ -36,7 +36,7 @@ export default class App extends Component {
 
     
     // 上面的请求也可以这样做
-    axios.get("http://localhost/3001", {
+    axios.get("http://localhost:3001", {
      
     })
     .then(function (response) {
@@ -54,7 +54,7 @@ export default class App extends Component {
     
     
     // 上面的请求也可以这样做
-    axios.get('http://localhost/3001/user', {
+    axios.get('http://localhost:3001/user', {
       params: {
         ID: 12345
       }
@@ -71,7 +71,7 @@ export default class App extends Component {
     console.log("butron click 3")
 
 
-    axios.post('http://localhost/3001/user', {
+    axios.post('http://localhost:3001/user', {
       firstName: 'Fred',
       lastName: 'Flintstone'
     })

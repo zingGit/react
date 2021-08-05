@@ -1,0 +1,9 @@
+
+export class CreateUser {
+
+    readonly ID: number;
+
+    readonly Name: string;
+
+    readonly Age: number;
+}
