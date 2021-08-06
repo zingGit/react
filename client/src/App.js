@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import axios from 'axios'
 
 
+axios.defaults.baseURL = 'http://localhost:3001';
 
 export default class App extends Component {
 
@@ -14,15 +15,23 @@ export default class App extends Component {
     return (
       <div className = "App">
         <h1> 嘻嘻嘻 </h1>
-        <button onClick = {this.onButton1}> btn_1</button>
+        <button onClick = {this.onGetAllUser}> onGetAllUser </button>
         <br/>
         <br/>
         <br/>
-        <button onClick = {this.onButton2}> btn_2</button>
+        <button onClick = {this.onGetUser}> onGetUser </button>
         <br/>
         <br/>
         <br/>
-        <button onClick = {this.onButton3}> btn_3</button>
+        <button onClick = {this.onCreateUser}> onCreateUser </button>
+        <br/>
+        <br/>
+        <br/>
+        <button onClick = {this.onUpdateUser}> onUpdateUser </button>
+        <br/>
+        <br/>
+        <br/>
+        <button onClick = {this.onRemoveUser}> onRemoveUser </button>
         <br/>
         <br/>
         <br/>
@@ -31,32 +40,16 @@ export default class App extends Component {
   }
 
 
-  onButton1 = e => {
-    console.log("butron click 1")
+  /**
+   * get 传参 需要放params 里 post 直接传对象
+   */
+  onGetAllUser = e => {
 
-    
-    // 上面的请求也可以这样做
-    axios.get("http://localhost:3001", {
-     
-    })
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-    
-  }
-  
-  onButton2 = e => {
-    
-    console.log("butron click 2")
-    
-    
-    // 上面的请求也可以这样做
-    axios.get('http://localhost:3001/user', {
+    axios.get("/user/getAll", {
       params: {
-        ID: 12345
+        ID: 1,
+        Name: "zing",
+        Age: 18
       }
     })
     .then(function (response) {
@@ -65,15 +58,33 @@ export default class App extends Component {
     .catch(function (error) {
       console.log(error);
     });
+    
   }
   
-  onButton3 = e => {
-    console.log("butron click 3")
+  onGetUser = e => {
+    
+    axios.post('/user/getUser', {
+        ID: 1,
+        Name: "zing",
+        Age: 18
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+  
+  onCreateUser = e => {
 
+    axios.post('/user/createUser', {
+      params: {
+        ID: 1,
+        Name: "zing",
+        Age: 18
 
-    axios.post('http://localhost:3001/user', {
-      firstName: 'Fred',
-      lastName: 'Flintstone'
+      }
     })
     .then(function (response) {
       console.log(response);
@@ -82,5 +93,46 @@ export default class App extends Component {
       console.log()
 
   })
+
+  
   }
+
+  onUpdateUser = e => {
+
+    axios.post('/user/updateUser', {
+      params: {
+        ID: 1,
+        Name: "uzing",
+        Age: 188
+
+      }
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log()
+
+    })
+  }
+
+  onRemoveUser = e => {
+
+    axios.post('/user/removeUser', {
+      params: {
+        ID: 1,
+        Name: "zing",
+        Age: 18
+
+      }
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log()
+
+    })
+  }
+
 }
