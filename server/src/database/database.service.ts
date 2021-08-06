@@ -16,7 +16,7 @@ export class DataBaseService {
             // user.ID = data.ID
             user.Name = data.Name
             user.Age = data.Age
-            return this.usersRepository.save(user);
+            return this.usersRepository.save(data);
           }
 
           findAll(): Promise<User[]> {

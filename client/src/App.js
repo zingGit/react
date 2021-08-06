@@ -3,15 +3,19 @@ import './App.css';
 import React, { Component } from 'react';
 
 import axios from 'axios'
+// import Axios from "./utils/Axios"
 
 
 axios.defaults.baseURL = 'http://localhost:3001';
 
 export default class App extends Component {
 
+  
+  componentDidMount() {
+  }
 
   render() {
-
+    
     return (
       <div className = "App">
         <h1> 嘻嘻嘻 </h1>
@@ -152,7 +156,7 @@ export default class App extends Component {
     
     axios.post('/database/create', {
       ID: 1,
-      Name: "zing222",
+      Name: "zing222333",
       Age: 18
     })
     .then(function (response) {

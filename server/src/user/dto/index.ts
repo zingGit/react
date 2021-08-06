@@ -1,6 +1,11 @@
+import { ApiProperty } from '@nestjs/swagger';
+
 export class UserBase {
+      @ApiProperty()
       readonly  ID: number;
+      @ApiProperty({description: "哈哈哈哈哈哈哈哈哈哈或"})
       readonly  Name: string;
+      @ApiProperty({description: "yyyyyyyyyyyyy"})
       readonly Age: number;
       
 }
