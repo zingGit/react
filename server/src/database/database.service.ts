@@ -11,11 +11,23 @@ export class DataBaseService {
             private readonly usersRepository: Repository<User>,
           ) {}
         
-          create(user): Promise<User> {
-            // const user = new User()
+          create(data): Promise<User> {
+            const user = new User()
             // user.ID = data.ID
-            // user.Name = data.Name
-            // user.Age = data.Age
+            user.Name = data.Name
+            user.Age = data.Age
             return this.usersRepository.save(user);
+          }
+
+          findAll(): Promise<User[]> {
+            return this.usersRepository.find();
+          }
+        
+          findOne(id: number): Promise<User> {
+            return this.usersRepository.findOne(id);
+          }
+        
+          async remove(id: number): Promise<void> {
+            await this.usersRepository.delete(id);
           }
 }

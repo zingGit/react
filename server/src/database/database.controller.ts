@@ -8,10 +8,25 @@ export class DatabaseController {
       constructor( private readonly dataBaseService: DataBaseService){}
 
       @Post("create")
-      // @HttpCode(204) 可以更改响应状态码
       getUser(@Body() data ): Promise<User> {
-          console.log("database create data:", data)
         
           return this.dataBaseService.create(data)
+      }
+
+      @Post("findAll")
+      findAll(@Body() data ): Promise<User[]> {
+        
+          return this.dataBaseService.findAll()
+      }
+
+      @Post("findOne")
+      findOne(@Body() { ID } ): Promise<User> {
+        
+          return this.dataBaseService.findOne(ID)
+      }
+      @Post("remove")
+      remove(@Body() { ID } ): Promise<void> {
+        
+          return this.dataBaseService.remove(ID)
       }
 }

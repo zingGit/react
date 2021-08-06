@@ -35,6 +35,25 @@ export default class App extends Component {
         <br/>
         <br/>
         <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <button onClick = {this.onCreate}> onCreate </button>
+        <br/>
+        <br/>
+        <br/>
+        <button onClick = {this.onRemove}> onRemove </button>
+        <br/>
+        <br/>
+        <br/>
+        <button onClick = {this.onFindAll}> onFindAll </button>
+        <br/>
+        <br/>
+        <br/>
+        <button onClick = {this.onFindOne}> onFindOne </button>
 
       </div>)
   }
@@ -79,12 +98,9 @@ export default class App extends Component {
   onCreateUser = e => {
 
     axios.post('/user/createUser', {
-      params: {
         ID: 1,
         Name: "zing",
         Age: 18
-
-      }
     })
     .then(function (response) {
       console.log(response);
@@ -100,12 +116,9 @@ export default class App extends Component {
   onUpdateUser = e => {
 
     axios.post('/user/updateUser', {
-      params: {
-        ID: 1,
-        Name: "uzing",
-        Age: 188
-
-      }
+      ID: 1,
+      Name: "zing",
+      Age: 18
     })
     .then(function (response) {
       console.log(response);
@@ -118,14 +131,10 @@ export default class App extends Component {
 
   onRemoveUser = e => {
 
-    axios.post('/database/create', {
-    // axios.post('/user/removeUser', {
-      params: {
-        ID: 1,
-        Name: "zing",
-        Age: 18
-
-      }
+    axios.post('/user/removeUser', {
+      ID: 1,
+      Name: "zing",
+      Age: 18
     })
     .then(function (response) {
       console.log(response);
@@ -134,6 +143,68 @@ export default class App extends Component {
       console.log()
 
     })
+  }
+
+
+  //-----------------database-------------
+
+  onCreate = e => {
+    
+    axios.post('/database/create', {
+      ID: 1,
+      Name: "zing222",
+      Age: 18
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log()
+
+    })
+    
+  }
+  onRemove = e => {
+
+    
+    axios.post('/database/remove', {
+      ID: 25,
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log()
+
+    })
+  }
+  onFindAll = e => {
+    
+    axios.post('/database/findAll', {
+   
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log()
+
+    })
+
+  }
+  onFindOne = e => {
+    
+    axios.post('/database/findOne', {
+      ID: 25,
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log()
+
+    })
+
   }
 
 }
