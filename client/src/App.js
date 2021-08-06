@@ -10,7 +10,7 @@ axios.defaults.baseURL = 'http://localhost:3001';
 
 export default class App extends Component {
 
-  
+  ws = null
   componentDidMount() {
   }
 
@@ -58,6 +58,19 @@ export default class App extends Component {
         <br/>
         <br/>
         <button onClick = {this.onFindOne}> onFindOne </button>
+
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <button onClick = {this.onConnect}> connect </button>
+        <br/>
+        <br/>
+        <br/>
+        <button onClick = {this.onEmit}> send </button>
 
       </div>)
   }
@@ -209,6 +222,34 @@ export default class App extends Component {
 
     })
 
+  }
+
+  //---------ws----------
+
+  onConnect = e=> {
+
+    console.log('Connected');
+    const socket = this.socket = new WebSocket('ws://localhost:3003');
+
+    socket.onopen = function() {
+      console.log('socket onopen');
+    
+      socket.onmessage = function(data) {
+        console.log("onmessage:",data);
+      };
+    };
+
+
+  }
+
+  onEmit = e=> {
+    console.log('socket send');
+    this.socket.send(
+      JSON.stringify({
+        event: 'events',
+        data: 'test',
+      }),
+    );
   }
 
 }
