@@ -118,7 +118,8 @@ export default class App extends Component {
 
   onRemoveUser = e => {
 
-    axios.post('/user/removeUser', {
+    axios.post('/database/create', {
+    // axios.post('/user/removeUser', {
       params: {
         ID: 1,
         Name: "zing",

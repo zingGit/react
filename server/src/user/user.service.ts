@@ -6,7 +6,7 @@ import { Repository } from 'typeorm'
 export class UserService {
 
     getAllUser(): string {
-
+        
         return `getAllUser`
     }
 
