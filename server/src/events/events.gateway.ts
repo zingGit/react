@@ -6,9 +6,9 @@ export class EventsGateway {
   @WebSocketServer()
   server: Server;
   @SubscribeMessage('events')
-  handleMessage(client: any, payload: any): string {
+  handleMessage(client: any, data: any): string {
 
-    console.log("handle:", )
+    console.log("handle:", data)
     return 'Hello world!';
   }
 }

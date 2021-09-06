@@ -39,12 +39,6 @@ export default class App extends Component {
         <br/>
         <br/>
         <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
         <button onClick = {this.onCreate}> onCreate </button>
         <br/>
         <br/>
@@ -61,20 +55,51 @@ export default class App extends Component {
 
         <br/>
         <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
         <button onClick = {this.onConnect}> connect </button>
         <br/>
         <br/>
         <br/>
         <button onClick = {this.onEmit}> send </button>
 
+        <div> ---------------------------------------</div>
+
+
+        <button onClick ={this.setKey}>set</button>
+        <br></br>
+        <br></br>
+        <br></br>
+
+        <button onClick={this.getKey}> get</button>
       </div>)
   }
 
+  setKey = ()=> {
+    axios.post('/redis/set', {
+        key: "newkeys",
+        value: "iiiiiiiiiisssssssssssssss"
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log()
+
+  })
+
+  }
+
+  getKey = ()=> {
+
+    axios.post('/redis/get', {
+        key: "newkeys"
+    })
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
 
   /**
    * get 传参 需要放params 里 post 直接传对象

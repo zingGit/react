@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { DatabaseModule } from './database/database.module';
 import { EventsModule } from './events/events.module';
+import { RedisModules } from './redis/redis.module';
 // import { EventsGateway } from './events/events.gateway';
 
 @Module({
@@ -23,7 +24,8 @@ import { EventsModule } from './events/events.module';
       autoLoadEntities: true,
       synchronize: true,
     }),
-    EventsModule
+    EventsModule,
+    RedisModules
   ],
   controllers: [AppController],
   providers: [AppService],
